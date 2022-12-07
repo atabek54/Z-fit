@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<br><br><br><br><br><br><br><br>
+  <ion-label>{{question}}</ion-label>
+
+  <div class="input-class">
+
+    <ion-input  [(ngModel)]="name" *ngIf="step===0" placeholder="Ad Soyad"></ion-input>
+    <ion-input [(ngModel)]="height" *ngIf="step===1" placeholder="Boy (m)"></ion-input>
+    <ion-input [(ngModel)]="weight" *ngIf="step===2" placeholder="Kilo (kg)"></ion-input>
+
+    <ion-input [(ngModel)]="age" *ngIf="step===3" placeholder="Yaş"></ion-input>
+    <ion-segment [(ngModel)]="gender" (ngModelChange)=" onSegment1Change()" *ngIf="step===4"  >
+      <ion-segment-button value="Bayan">
+        <ion-label>Bayan</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Bay">
+        <ion-label>Bay</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-segment  [(ngModel)]="stateOfMovement" (ngModelChange)="onSegment2Change()" *ngIf="step===5" >
+      <ion-segment-button value="Hiç">
+        <ion-label>Hiç</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Az">
+        <ion-label>Az</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Orta">
+        <ion-label>Orta</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Yüksek">
+        <ion-label>Yüksek</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+
+
+  </div>
+
+
+  <ion-row>
+    <ion-button (click)="back()" [disabled]="step===0">Geri</ion-button>
+  <ion-button (click)="next()">{{step===5 ?'Kaydet':'İleri'}}</ion-button>
+
+
+  </ion-row>
+
+
+
+</ion-content>

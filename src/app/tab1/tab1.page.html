@@ -9,9 +9,30 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Kalori Takibi</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-label>Bugün Ne Yedin ?</ion-label>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-item>
+    <ion-select [(ngModel)]="myAteFoods" (ngModelChange)="calculateMyCalorie()" placeholder="Yiyecek Seç" [multiple]="true">
+      <ion-select-option *ngFor="let food of foods" value="{{food.kalori}}">{{food.yemek}}</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+<br><br><br>
+  <ion-label>Gerekli Kalori</ion-label>
+  <p class="p1"> <b> {{myTakenCalorie}}/{{user.amountOfCaloriesNeed}} kcal</b> </p>
+  <p >{{myTakenCalorie > user.amountOfCaloriesNeed?'Kalori miktarını aştınız':'Yeteri kadar kalori almadınız'}}</p>
+
+  <ion-progress-bar style="{{myTakenCalorie<user.amountOfCaloriesNeed ?'--progress-background: green;':'--progress-background: red'}}
+  " class="progress-bar"  value="{{myTakenCalorie/user.amountOfCaloriesNeed}}" ></ion-progress-bar>
+<!--suuu-->
+<br><br><br>
+<ion-label>Gerekli Su</ion-label>
+<p class="p1"> <b> {{myDrunkWater}}/{{user.amountofWaterNeed}} bardak</b><ion-button (click)="removeDrunkWater()">-</ion-button> <ion-button (click)="addDrunkWater()">+</ion-button> </p>
+<p >{{myDrunkWater > user.amountofWaterNeed?'Yeterli miktarda su içtiniz':'Yeteri kadar su içmediniz'}}</p>
+
+<ion-progress-bar style="{{myDrunkWater<user.amountofWaterNeed ?'--progress-background: blue;':'--progress-background: green'}}
+" class="progress-bar"  value="{{myDrunkWater/user.amountofWaterNeed}}" ></ion-progress-bar>
 </ion-content>

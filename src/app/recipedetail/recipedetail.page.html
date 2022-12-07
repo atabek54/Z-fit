@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{recipe.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="image">
+    <img src="{{recipe.image}}" alt="">
+  </div>
+
+<ion-label>Malzemeler</ion-label>
+<p>{{recipe.materials}}</p>
+
+
+<ion-label>Hazırlanışı</ion-label>
+<p>{{recipe.preparation}}</p>
+
+
+
+</ion-content>
