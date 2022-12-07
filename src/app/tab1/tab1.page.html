@@ -22,17 +22,17 @@
   </ion-item>
 <br><br><br>
   <ion-label>Gerekli Kalori</ion-label>
-  <p class="p1"> <b> {{myTakenCalorie}}/{{user?.amountOfCaloriesNeed}} kcal</b> </p>
-  <p >{{myTakenCalorie > user?.amountOfCaloriesNeed?'Kalori miktarını aştınız':'Yeteri kadar kalori almadınız'}}</p>
+  <p class="p1"> <b> {{myTakenCalorie}}/{{amountOfCalorie}} kcal</b> </p>
+  <p >{{myTakenCalorie > amountOfCalorie? 'Kalori miktarını aştınız':'Yeteri kadar kalori almadınız'}}</p>
 
-  <ion-progress-bar style="{{myTakenCalorie< user?.amountOfCaloriesNeed ?'--progress-background: green;':'--progress-background: red'}}
-  " class="progress-bar"  value="{{myTakenCalorie/user?.amountOfCaloriesNeed}}" ></ion-progress-bar>
+  <ion-progress-bar style="{{myTakenCalorie < amountOfCalorie ?  '--progress-background: green;':'--progress-background: red'}}
+  " class="progress-bar"  value="{{myTakenCalorie / amountOfCalorie}}" ></ion-progress-bar>
 <!--suuu-->
 <br><br><br>
 <ion-label>Gerekli Su</ion-label>
-<p class="p1"> <b> {{myDrunkWater}}/{{user?.amountofWaterNeed}} bardak</b><ion-button (click)="removeDrunkWater()">-</ion-button> <ion-button (click)="addDrunkWater()">+</ion-button> </p>
-<p >{{myDrunkWater > user?.amountofWaterNeed ?'Yeterli miktarda su içtiniz':'Yeteri kadar su içmediniz'}}</p>
+<p class="p1"> <b> {{myDrunkWater}}/{{amountOfWater}} bardak</b><ion-button (click)="removeDrunkWater()">-</ion-button> <ion-button (click)="addDrunkWater()">+</ion-button> </p>
+<p >{{myDrunkWater >= amountOfWater ?'Yeterli miktarda su içtiniz':'Yeteri kadar su içmediniz'}}</p>
 
-<ion-progress-bar style="{{myDrunkWater< user?.amountofWaterNeed ?'--progress-background: blue;':'--progress-background: green'}}
-" class="progress-bar"  value="{{myDrunkWater/user?.amountofWaterNeed}}" ></ion-progress-bar>
+<ion-progress-bar style="{{myDrunkWater< amountOfWater ?'--progress-background: blue;':'--progress-background: green'}}
+" class="progress-bar"  value="{{myDrunkWater/amountOfWater}}" ></ion-progress-bar>
 </ion-content>

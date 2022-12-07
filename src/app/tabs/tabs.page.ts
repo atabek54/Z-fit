@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LoginModalPage } from '../login-modal/login-modal.page';
-import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-tabs',
@@ -9,25 +8,15 @@ import { User } from '../models/user.model';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage implements OnInit {
-user:User={
-  name: '',
-  height: '',
-  weight: '',
-  age: '',
-  gender: '',
-  stateOfMovement: '',
-  bodyMass: '',
-  amountOfCaloriesNeed: '',
-  amountofWaterNeed: ''
-};
-  constructor(private modalCtrl:ModalController) {}
+user:any
+  constructor(private modalCtrl:ModalController) {
+this.user=localStorage.getItem('User');
+  }
 ngOnInit(): void {
   console.log('TabsPage')
-const user =localStorage.getItem('User')
-if(user==null){
-  this.openSettingsModal()
-
-}
+  console.log(JSON.parse(this.user))
+if(this.user==null)
+this.openSettingsModal()
 }
 
   async openSettingsModal() {

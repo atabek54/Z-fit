@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { modalController } from '@ionic/core';
 import { User } from '../models/user.model';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login-modal',
@@ -38,8 +39,14 @@ export class LoginModalPage implements OnInit {
 
 
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+
+  constructor(private activatedRoute: ActivatedRoute,private modalCtrl:ModalController,
+    private navCtrl:NavController) {
+
+}
   ngOnInit(): void {
+    const user =localStorage.getItem('User')
+
     this.gender='Bay';
     this.stateOfMovement='Hiç';
     this.question='Adınızı giriniz';
@@ -113,7 +120,7 @@ this.user.amountOfCaloriesNeed=this.amountOfCaloriesNeed;
 }
 
 
-next(){
+  async next(){
   if(this.step==0){
     this.user.name=this.name
 
@@ -148,9 +155,14 @@ next(){
 //Kaydet
  localStorage.setItem('User',JSON.stringify(this.user))
  const currentUser=localStorage.getItem('User');
- console.log(currentUser);
- if(currentUser!=null)
- modalController.dismiss()
+
+
+await this.modalCtrl.dismiss()
+
+
+
+
+
 
   }else{
     this.step++
