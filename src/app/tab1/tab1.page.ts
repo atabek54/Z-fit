@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { LoginModalPage } from '../login-modal/login-modal.page';
 
 @Component({
   selector: 'app-tab1',
@@ -14,10 +16,22 @@ myAteFoods:any=[]
 amountOfWater:any;
 amountOfCalorie:any;
 
-  constructor() {
+  constructor(private modalCtrl:ModalController) {
 this.user= localStorage.getItem('User')
 this.user=JSON.parse(this.user)
 console.log(this.user)
+
+  }
+  async openEditModal(){
+
+      const modal = await this.modalCtrl.create({
+        component: LoginModalPage,
+        // Modal'a aktarilacak veriler componentProps'a yazilir
+        // componentProps: {
+        //   user: this.user
+        // }
+      });
+      return await modal.present();
 
   }
 ngOnInit(): void {
