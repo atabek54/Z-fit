@@ -14,11 +14,7 @@ myAteFoods:any=[]
   constructor() {
 this.user= localStorage.getItem('User')
 this.user=JSON.parse(this.user)
-
-
-
-
-
+console.log(this.user)
   }
 ngOnInit(): void {
   this.myTakenCalorie=0
