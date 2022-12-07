@@ -1,0 +1,7 @@
+{
+  "name": "Z-fit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
